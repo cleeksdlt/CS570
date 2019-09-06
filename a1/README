@@ -1,0 +1,43 @@
+Christian De La Torre - cssc 0786
+Ernesto Parra - cssc 0787
+Assignment #1 - Thread Processing and Semaphores 
+CS 570 Summer 2019 
+README
+
+**IMPORTANT**
+-EXECUTE THE MAKEFILE/PROGRAM INSIDE OF THE EDORAS ACCOUNT: CSSC0786
+
+**File Manifest**
+-main.cpp --> main source file
+-main.o
+-player.h --> header file
+-Makefile --> make file to compile and link main and player
+-STACK.txt --> output file for main.cpp program that displays card name and card value
+-README --> file
+-player --> executable program
+
+**Compile Instructions**
+-Inside of the a1 file inside of edoras, type 'make' without the quotation marks and then after typing 'make' type './player' and the program will execute. The program will print out to the console the thread id running and create a "STACK.txt" file that shows the card name and card value.
+
+**Operating Instructions**
+-Command line argument: g++ main.cpp -o player -lpthread 
+-To execute file: ./player
+
+**Novel/Significant Design Decisions**
+-The decision was made to use a method for threads, that would allow the threads to be passed into 
+said method, thread_runner, and allow for the specific instructions to be executed. Without the thread_runner method than the program would have been difficult to code and execute all within the main
+method.
+
+**Extra Features/Algorithms/Functionality**
+-We decided to use a typedef struct to be able to pass in the thread arguments, such as the name of the
+thread running and the delay for each thread. This was not required but made it easier to execute the delays in proper order. Also included the mutex lock function in order to make sure that threads could not sneak into the critical section, and if so, would have to wait until the mutex was unlocked to enter.
+Also made a Makefile so that the user would only have to type 'make' and then './player' to execute the code without worrying about including specific instructions in the command line.
+
+**Deficiencies/Bugs**
+-sem_init() and sem_destroy() are not compatible on MacOS systems, so in order to get code to execute 
+properly then it must be executed on a Linux system that supports semaphores. Example would be edoras or
+Ubuntu.
+
+**Lessons Learned** 
+-We learned how to create threads to allow certain instructions to run at the same time to allow for multitasking instructions. Also learned how to use semaphores and mutex instructions to make sure that the threads would wait until they were given permission to write to the "STACK.txt" file. Otherwise without the semaphores and mutex instructions, there is a chance of a race condition occuring. Also learned how to set up delays in order to allow threads to run at different times and allow certain threads to run faster than others. 
+
