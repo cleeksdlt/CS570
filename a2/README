@@ -1,0 +1,59 @@
+Assignment #2 - Program Actuator and Microshell 
+CS 570 Summer 2019 
+Christian De La Torre - cssc 0786 
+Ernesto Parra - cssc 0787
+README
+
+**IMPORTANT INFORMATION**
+- EXECUTABLE PROGRAM CAN BE FOUND INSIDE OF THE CLASS ACCOUNT CSSC0786 WHICH IS CHRISTIAN DE LA TORRE
+
+**File Contents/Manifest** 
+- main.cpp
+- main.o
+- processor.cpp 
+- processor.hpp
+- processor.o
+- tokenizer.cpp
+- tokenizer.hpp
+- tokenizer.o
+- Makefile 
+- pam
+- README
+**The folder where the files are located is named "a2"**
+
+**Compile Instructions**
+- Inside of the terminal, run the Makefile by typing "make"
+- Then after typing "make", type "./pam"
+- After running all compile instructions, enter executable file names or valid arguments
+
+**Operating Instructions**
+- Command Line: g++ main.cpp tokenizer.cpp processor.cpp -o pam -lreadline
+
+**List/Description of Novel/Significant Design Decisions**
+- Multiple header and class files to be able to separate the needs and requirements of the assignment
+
+**List/Description of any extra features/algorithms/functionality you included which were not required**
+- Included multiple class and header files to separate the tokenizer and the processes running after tokenizing the user input
+- Checked for special characters to make sure they are not processed
+- Used a linked list to add all tokens onto a list to be able to read better and turn into arguments for execvp to read
+
+**List/Description of all known deficiencies or bugs**
+- Program does not run '|' or pipe commands as we were unable to get the pipe command to work properly
+- Program will execute properly when typing "ls | -sort" but the command "ls | sort" does not work
+
+**Pair Assignment Workload**
+- Ernesto Parra worked on the tokenizer.cpp, tokenizer.hpp, and README.md files
+- Christian De La Torre worked on the processor.cpp, processor.hpp, and Makefile files
+- We both worked together to develop the main.cpp file
+
+**Lessons Learned**
+- This program is a demonstation of our understanding of implementing a microshell named "pam" that uses techniques such as parsing and tokenizing input from the command prompt, as well as implementing pipes. The idea behind this assigment is that when it prompts a user for input of a filename and it is determined if that filename is an executable file and if not then an error message is displayed. 
+
+- We learned to conceptualize and learn to implement a functioning microshell. We learned how to tokenize user input to allow the compiler to understand user input arguments/executable file names. We also learned how to separate the program amongst different header and class files in order to balance the workload and assign different roles depending on the class. We also learned how to implement dup(), pipe() and fork() system calls to separate the two processes running. Also learned how to implement a linked list within the program to be able to tokenize the arguments. And learned how to use execvp() system call in order to check for an executable file name and make sure that arguments are valid when entered in by the user.
+
+- This assignment was developed in Visual Studio in the C++ programming language on a Mac machine running Mac OS Mojave version 10.14.5. Unlike the previous program (assignment 1), which was developed in a Linux virtual machine, there was no need to move to any virtual machines running alternate operating systems since we ran into no problems with any system calls or semantics.  
+
+- The biggest issue that we ran into was coding the implementation for the pipes, since we had no prior experience with implementing pipes we had to refer to different resources such as Linux manpages and different tutorial videos to understand how pipes functions. Implementing the "ls | sort" command was the toughest part of this entire project, and looking into using the dup( ) and dup(2) system calls in order to get the pipe up and running however the system call would crash midway through running and was then unable to exist 
+
+
+    
