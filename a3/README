@@ -1,0 +1,49 @@
+Assignment #3 - Event Management Program
+CS 570 Summer 2019 
+Christian De La Torre - cssc 0786 
+Ernesto Parra - cssc 0787
+README
+
+**IMPORTANT INFORMATION**
+- EXECUTABLE PROGRAM CAN BE FOUND INSIDE OF THE CLASS ACCOUNT CSSC0786 WHICH IS CHRISTIAN DE LA TORRE
+
+**File Contents/Manifest** 
+- main.cpp --> Main file
+- main.o
+- emp.h --> Header file
+- Makefile --> Makefile
+- emp --> Executable file
+- README --> File
+**The folder where the files are located is named "a3"**
+
+**Compile Instructions**
+- Inside of the terminal, run the Makefile by typing "make"
+- Then after typing "make", type "./emp"
+- After running all compile instructions, enter valid arguments
+- First argument can be any number from 1 - 100
+- Second argument must be either 1 or 60
+- Third argument can be any number less than first argument
+
+**Operating Instructions**
+- Command Line: g++ main.cpp -o emp -lpthread
+
+**Novel/Significant Design Decisions**
+-The decision was made to use 3 different methods for threads, that would allow the threads to be passed into said method, alarm_time, count_down, and wall_clock, and allow for the specific instructions to be executed. Without the 3 different method than the program would have been difficult to code and execute all within the main method. Since 3 different requirements are needed, the 3 methods were needed. Then used a signalHandler to detect raised signals and terminate threads.
+
+**Extra Features/Algorithms/Functionality**
+-We decided to use a typedef struct to be able to pass in the thread arguments, such as the delay for each thread. This was not required but made it easier to execute the delays in proper order. Also included the mutex lock function in order to make sure that threads could not sneak into the critical section, and if so, would have to wait until the mutex was unlocked to enter.
+Also made a Makefile so that the user would only have to type 'make' and then './emp' to execute the code without worrying about including specific instructions in the command line.
+
+**Deficiencies/Bugs**
+-sem_init() and sem_destroy() are not compatible on MacOS systems, so in order to get code to execute properly then it must be executed on a Linux system that supports semaphores. Example would be edoras or Ubuntu.
+-Program does not immediately end after the end of the count_down timer, therefore creating a small delay for the program to abort after it is done.
+
+**Pair Assignment Workload**
+- Ernesto Parra worked on the README file and main method
+- Christian De La Torre worked on the 3 thread methods (alarm_time, count_down, wall_clock), signalHandler method and the Makefile
+
+**Lessons Learned** 
+-We learned how to create threads to allow certain instructions to run at the same time to allow for multitasking instructions. Also learned how to use semaphores and mutex instructions to make sure that the threads would wait until they were given permission to write to the terminal. Otherwise without the semaphores and mutex instructions, there is a chance of a race condition occuring. Also learned how to set up delays in order to allow threads to run at different times and allow certain threads to run faster than others. Also learned how to use a signal handler to detect when certain methods have sent a signal and allow the signalHandler to execute program specific instructions.
+
+
+    
